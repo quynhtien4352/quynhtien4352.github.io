@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Góc nhìn từ đỉnh núi - Không Gian Của Tôi</title>
+    <style>
+        body {
+            /* NỀN LỚN: Màu nâu đất trầm ấm */
+            background-color: #3e2723;
+            background-image: linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+                              linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 6px 6px;
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Dây leo và hoa ở 2 góc bài đọc */
+        body::before, body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 280px;
+            height: 280px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0.75;
+            z-index: 1;
+        }
+        body::before {
+            left: 0;
+            background-image: url('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=300&auto=format&fit=crop'); 
+            mask-image: radial-gradient(circle at top left, black 50%, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at top left, black 50%, transparent 85%);
+        }
+        body::after {
+            right: 0;
+            background-image: url('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=300&auto=format&fit=crop');
+            transform: scaleX(-1); 
+            mask-image: radial-gradient(circle at top left, black 50%, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at top left, black 50%, transparent 85%);
+        }
+
+        /* NỀN NHỎ (CARD CHỮ): Màu xanh ngọc sâu lắng */
+        .article-container {
+            max-width: 700px;
+            width: 100%;
+            background-color: rgba(0, 77, 64, 0.92); 
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-top: 4px solid #4db6ac;
+            backdrop-filter: blur(10px); 
+            z-index: 10;
+        }
+
+        .back-home {
+            color: #b2dfdb;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+        .back-home:hover {
+            color: #ffffff;
+            transform: translateX(-3px);
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .date {
+            color: #80cbc4;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 30px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #e0f2f1;
+            margin-bottom: 20px;
+        }
+        .quote {
+            border-left: 4px solid #b2dfdb;
+            padding-left: 20px;
+            font-style: italic;
+            color: #e0f7fa;
+            background-color: rgba(255,255,255,0.05);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="article-container">
+        <a href="index.html" class="back-home">← Quay về Trang Chủ</a>
+
+<a href="index.html#goc-nhin-section" class="back-home">← Quay về Góc Nhìn</a>
+        <h1>Góc nhìn từ đỉnh núi</h1>
+        <span class="date">Đăng ngày 11 Tháng 6, 2026</span>
+        
+        <p>Khi đối diện với những lo toan hằng ngày, tâm trí chúng ta thường có xu hướng bị cuốn chặt vào trong các chi tiết vụn vặt. Giống như việc ta đứng quá gần một bức tường, ta chỉ thấy những vết rạn nứt mà quên mất vẻ đẹp tổng thể của ngôi nhà.</p>
+        
+        <div class="quote">
+            "Đỉnh núi không phải là nơi để trốn tránh thực tại, mà là nơi giúp ta có một tầm nhìn đủ rộng lớn để thấy rõ thực tại hơn."
+        </div>
+
+        <p>Lùi lại một bước, đứng từ trên cao quan sát những bộn bề từ một khoảng cách đủ xa, mọi áp lực bỗng chốc thu nhỏ lại bằng kích thước vốn có của nó. Từ góc nhìn mang tính tách biệt và khách quan này, ta nhận ra phần lớn những âu lo đều do tâm trí tự phóng đại lên.</p>
+        
+        <p>Hãy dành cho bản thân những khoảnh khắc "lên đỉnh núi" trong tâm tưởng mỗi ngày, để thấy rằng dòng chảy cuộc sống vẫn luôn bình thản trôi qua, và mọi giông bão rồi cũng sẽ nhường chỗ cho sự tĩnh lặng.</p>
+    </div>
+
+</body>
+</html>

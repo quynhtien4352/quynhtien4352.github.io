@@ -3,79 +3,87 @@
 <head>
     <title>Trang Web Của Tôi</title>
     
-    <!-- Đây là khu vực CSS (Sơn tường & Nội thất) -->
     <style>
-        /* CẤU HÌNH CHUNG */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #f2f9f9; /* Màu nền xanh ngọc pastel cực dịu nhẹ */
-            color: #2d3748;
+            background-color: #e0f2f1; 
+            color: #8d6e63;            
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Giúp chân trang luôn nằm ở đáy */
+            min-height: 100vh;
+            transition: background-color 1.5s ease, color 1.5s ease;
         }
 
-        /* 1. PHẦN ĐẦU TRANG (HEADER) */
+        /* 1. HEADER */
         header {
             background-color: #ffffff;
             display: flex;
-            justify-content: space-between; /* Đẩy tên sang trái, menu sang phải */
+            justify-content: space-between;
             align-items: center;
             padding: 20px 10%;
             box-shadow: 0 2px 10px rgba(0, 150, 136, 0.05);
+            transition: background-color 1.5s ease;
         }
 
         header .logo {
             font-size: 20px;
             font-weight: bold;
-            color: #00796b; /* Màu xanh ngọc đậm */
+            color: #00796b;
         }
 
         header nav a {
-            color: #4a5568;
-            text-decoration: none; /* Bỏ dấu gạch chân mặc định của liên kết */
+            color: #8d6e63;
+            text-decoration: none;
             margin-left: 20px;
             font-weight: 500;
             transition: 0.3s;
         }
 
         header nav a:hover {
-            color: #009688; /* Đổi màu khi rà chuột vào menu */
+            color: #009688;
         }
 
-        /* 2. PHẦN NỘI DUNG CHÍNH (MAIN) */
+        /* 2. MAIN CONTENT */
         .main-content {
-            flex: 1; /* Chiếm trọn không gian trống ở giữa */
+            flex: 1;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             padding: 40px 20px;
         }
 
         .intro-card {
-            background-color: #ffffff;
+            background-color: #e8f5e9; 
             padding: 50px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 150, 136, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 150, 136, 0.05);
             text-align: center;
             max-width: 600px;
-            border-left: 6px solid #009688; /* Đổi điểm nhấn sang cạnh bên trái cho mới lạ */
+            border-left: 6px solid #009688;
+            margin-bottom: 40px;
+            transition: background-color 1.5s ease, border-color 1.5s ease;
         }
-/* Định dạng cho hình ảnh */
+
         .avatar {
-            width: 120px;          /* Chiều rộng ảnh */
-            height: 120px;         /* Chiều cao ảnh */
-            border-radius: 50%;    /* Mẹo thần kỳ: Bo tròn 50% sẽ biến ảnh vuông thành ảnh tròn */
-            object-fit: cover;     /* Giúp ảnh không bị méo khi co giãn */
-            margin-bottom: 20px;   /* Tạo khoảng cách với chữ bên dưới */
-            border: 4px solid #e0f2f1; /* Tạo một vòng viền màu xanh ngọc nhạt quanh ảnh */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
+
         h1 {
             color: #00796b;
             font-size: 32px;
             margin-top: 0;
+            transition: color 1.5s ease;
         }
 
         .subtitle {
@@ -83,29 +91,183 @@
             color: #009688;
             font-style: italic;
             margin-bottom: 25px;
+            transition: all 1.2s ease;
         }
 
-        /* NÚT BẤM */
+        .intro-card p {
+            color: #8d6e63;
+        }
+
         button {
             background-color: #009688;
             color: white;
             border: none;
             padding: 14px 30px;
             font-size: 16px;
-            border-radius: 30px; /* Làm nút bo tròn hẳn nhìn rất nghệ thuật */
+            border-radius: 30px;
             cursor: pointer;
-            transition: 0.3s;
             margin-top: 15px;
             box-shadow: 0 4px 15px rgba(0, 150, 136, 0.2);
+            transition: all 0.5s ease;
         }
 
         button:hover {
             background-color: #00796b;
-            transform: translateY(-3px); /* Hiệu ứng nhấc nút lên nhẹ khi rà chuột */
+            transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 150, 136, 0.3);
         }
 
-        /* 3. PHẦN CHÂN TRANG (FOOTER) */
+        /* KHU VỰC BÀI VIẾT - BAN ĐẦU SẼ ẨN */
+        .blog-container {
+            max-width: 1000px;
+            margin: 20px auto 40px auto;
+            padding: 0 20px;
+            width: 100%;
+            display: none; /* Ẩn đi hoàn toàn ban đầu */
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .section-title {
+            color: #00796b;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            transition: color 1.5s ease;
+        }
+
+        .blog-grid {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .blog-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 150, 136, 0.03);
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            border-top: 4px solid #009688;
+            transition: all 1.5s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 150, 136, 0.1);
+        }
+
+        .blog-date {
+            font-size: 12px;
+            color: #a0aec0;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .blog-card h3 {
+            color: #2d3748;
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            transition: color 1.5s ease;
+        }
+
+        .blog-card p {
+            color: #718096;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            transition: color 1.5s ease;
+        }
+
+        .read-more {
+            color: #009688;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        /* KHU VỰC LIÊN HỆ MỚI */
+        .contact-container {
+            max-width: 800px;
+            width: 100%;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: none; /* Ẩn đi ban đầu luôn */
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .contact-grid {
+            display: flex;
+            gap: 30px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: all 1.5s ease;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            margin-top: 0;
+            color: #00796b;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: block;
+            color: #8d6e63;
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #00e676;
+            padding-left: 5px;
+        }
+
+        .contact-form {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: inherit;
+            background-color: #f7fafc;
+            color: #2d3748;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #009688;
+            background-color: #ffffff;
+        }
+
+        .contact-form button {
+            margin-top: 5px;
+            padding: 10px 20px;
+            align-self: flex-start;
+        }
+
+        /* 3. FOOTER */
         footer {
             background-color: #ffffff;
             text-align: center;
@@ -113,65 +275,151 @@
             font-size: 14px;
             color: #7f8c8d;
             border-top: 1px solid #e2e8f0;
-        }</style>
+            transition: background-color 1.5s ease, color 1.5s ease;
+        }
+    </style>
 </head>
-<script>
-        // 1. Nói với máy tính: Hãy chú ý đến chiếc nút có ID là "myButton"
-        const nutBam = document.getElementById('myButton');
+<body>
 
-        // 2. Lắng nghe xem khi nào người dùng "click" vào chiếc nút đó
-        nutBam.addEventListener('click', function() {
-            // 3. Hành động sẽ xảy ra khi bấm nút: Hiển thị một hộp thoại thông báo
-            alert('Chúc mừng bạn! Bạn vừa kích hoạt dòng code JavaScript đầu tiên trong đời rồi đó! 🎉');
-        });
-    </script><body>
-
-    <body>
-
-    <header>
-        <div class="logo">Không Gian Của Tôi</div>
+    <header id="myHeader">
+        <div class="logo" id="myLogo">Không Gian Của Tôi</div>
         <nav>
-            <a href="#">Trang Chủ</a>
-            <a href="#">Góc Nhìn</a>
-            <a href="#">Liên Hệ</a>
+            <a href="#" class="nav-link">Trang Chủ</a>
+            <a href="#goc-nhin-section" class="nav-link">Góc Nhìn</a>
+            <a href="#lien-he-section" class="nav-link">Liên Hệ</a>
         </nav>
     </header>
 
     <main class="main-content">
-        <section class="intro-card">
+        <section class="intro-card" id="myIntroCard">
             <img src="me.jpg.jpg" alt="Hình ảnh của tôi" class="avatar">
-            <h1>Chào bạn, mình là một người học hỏi</h1>
+            <h1 id="myH1">Chào bạn, mình là một người học hỏi</h1>
             <p class="subtitle">Khám phá nội tâm và chia sẻ những góc nhìn mới về cuộc sống.</p>
-            <p>Đây là không gian nhỏ nơi mình lưu trữ những hành trình, những dự án sáng tạo và những bài học tự thân độc bản từ góc nhìn riêng.</p>
+            <p id="myIntroText">Đây là không gian nhỏ nơi mình lưu trữ những hành trình, những dự án sáng tạo và những bài học tự thân độc bản từ góc nhìn riêng.</p>
             <button id="myButton">Khám phá ngay</button>
+        </section>
+
+        <section id="goc-nhin-section" class="blog-container">
+            <h2 class="section-title" id="blogTitle">Những Góc Nhìn Gần Đây</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <span class="blog-date">11 Tháng 6, 2026</span>
+                    <h3>Góc nhìn từ đỉnh núi</h3>
+                    <p>Khi ta lùi lại một bước và quan sát những bộn bề từ một khoảng cách đủ xa, mọi áp lực bỗng chốc thu nhỏ lại. Đỉnh núi không phải để trốn tránh, mà là để thấy rõ hơn...</p>
+                    <a href="goc-nhin-1.html" class="read-more">Đọc tiếp →</a>
+                </article>
+
+                <article class="blog-card">
+                    <span class="blog-date">05 Tháng 6, 2026</span>
+                    <h3>Hành trình định vị DNA bản thân</h3>
+                    <p>Hiểu về chính mình giống như việc vẽ một bức tranh phác thảo bằng bút mực rồi tô điểm bằng những vệt màu nước tốc độ. Không cần hoàn hảo, chỉ cần là độc bản...</p>
+                    <a href="dna-ban-than.html" class="read-more">Đọc tiếp →</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="lien-he-section" class="contact-container">
+            <div class="contact-grid" id="myContactGrid">
+                <div class="contact-info">
+                    <h3 id="contactInfoTitle">Kết Nối Với Mình</h3>
+                    <p>Nếu bạn tìm thấy sự đồng điệu hoặc muốn chia sẻ câu chuyện của riêng bạn, đừng ngần ngại gửi lời nhắn nhé.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">🌿 TikTok Nội Tâm</a>
+                        <a href="#" class="social-icon">📹 YouTube Perspective</a>
+                        <a href="#" class="social-icon">✉️ email@cuaban.com</a>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Cảm ơn lời nhắn chữa lành từ bạn!');">
+                    <input type="text" placeholder="Tên của bạn" required>
+                    <input type="email" placeholder="Email liên hệ" required>
+                    <textarea rows="4" placeholder="Lời nhắn gửi đến không gian này..." required></textarea>
+                    <button type="submit" id="submitBtn">Gửi lời nhắn</button>
+                </form>
+            </div>
         </section>
     </main>
 
-    <footer>
+    <footer id="myFooter">
         <p>© 2026 Được tự tay xây dựng bởi Chính Bạn | Cảm hứng từ sự tĩnh lặng</p>
     </footer>
 
     <script>
-        // 1. Tìm chiếc nút bấm và tìm chỗ để viết chữ
         const nutBam = document.getElementById('myButton');
         const theSubTitle = document.querySelector('.subtitle');
+        const blogTitle = document.getElementById('blogTitle');
+        const introCard = document.getElementById('myIntroCard');
+        const mainH1 = document.getElementById('myH1');
+        const introText = document.getElementById('myIntroText');
+        const header = document.getElementById('myHeader');
+        const footer = document.getElementById('myFooter');
+        const logo = document.getElementById('myLogo');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const blogCards = document.querySelectorAll('.blog-card');
+        
+        const blogContainer = document.getElementById('goc-nhin-section');
+        const contactContainer = document.getElementById('lien-he-section');
+        const contactGrid = document.getElementById('myContactGrid');
+        const contactInfoTitle = document.getElementById('contactInfoTitle');
+        const socialIcons = document.querySelectorAll('.social-icon');
 
-        // 2. Lắng nghe lượt bấm của người dùng
-        nutBam.addEventListener('click', function() {
-            // Thay đổi nội dung lời phụ bằng câu nói của bạn
-            theSubTitle.innerHTML = "“Niềm vui và sự hài lòng đến từ những điều nhỏ bé”";
+        // HÀM KÍCH HOẠT CHẾ ĐỘ ĐÊM VÀ HIỆN NỘI DUNG
+        function kichHoatKhamsPha(isSmooth) {
+            document.body.style.backgroundColor = "#111111"; 
+            header.style.backgroundColor = "#1a1a1a";
+            footer.style.backgroundColor = "#1a1a1a";
+            footer.style.color = "#777777";
+            logo.style.color = "#00e676";
             
-            // Thêm hiệu ứng chữ nghiêng và đổi sang màu xanh đậm hơn cho nổi bật
-            theSubTitle.style.fontStyle = "italic";
-            theSubTitle.style.color = "#00796b";
-            theSubTitle.style.fontWeight = "bold";
+            introCard.style.backgroundColor = "#1e1e1e"; 
+            introCard.style.borderColor = "#00e676";
+            mainH1.style.color = "#ffffff";
+            introText.style.color = "#cccccc";
+            
+            if(blogTitle) { blogTitle.style.color = "#ffffff"; }
+            
+            navLinks.forEach(link => { link.style.color = "#cccccc"; });
+            blogCards.forEach(card => {
+                card.style.backgroundColor = "#1e1e1e"; 
+                card.querySelector('h3').style.color = "#ffffff";
+                card.querySelector('p').style.color = "#aaaaaa";
+                card.style.borderTopColor = "#00e676";
+            });
 
-            // Biến mất chiếc nút bấm sau khi bấm để trang web gọn gàng hơn
+            contactGrid.style.backgroundColor = "#1e1e1e";
+            contactGrid.style.color = "#cccccc";
+            contactInfoTitle.style.color = "#ffffff";
+            socialIcons.forEach(icon => { icon.style.color = "#00e676"; });
+
+            blogContainer.style.display = "block";
+            contactContainer.style.display = "block";
+            
+            theSubTitle.innerHTML = "“Niềm vui và sự hài lòng đến từ những điều nhỏ bé”";
+            theSubTitle.style.fontStyle = "italic";
+            theSubTitle.style.color = "#00e676"; 
+            theSubTitle.style.fontWeight = "bold";
+            theSubTitle.style.opacity = "1";
             nutBam.style.display = "none";
+
+            setTimeout(function() {
+                blogContainer.style.opacity = "1";
+                contactContainer.style.opacity = "1";
+                // Cuộn xuống mục Góc Nhìn mượt mà
+                blogContainer.scrollIntoView({ behavior: isSmooth ? 'smooth' : 'auto' });
+            }, 100);
+        }
+
+        // Sự kiện khi người dùng tự bấm nút lần đầu
+        nutBam.addEventListener('click', function() {
+            localStorage.setItem('daKhamPha', 'true'); // Lưu trạng thái vào trình duyệt
+            kichHoatKhamsPha(true);
+        });
+
+        // TỰ ĐỘNG KIỂM TRA KHI TẢI LẠI TRANG (Khi từ bài viết quay về)
+        window.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('daKhamPha') === 'true') {
+                kichHoatKhamsPha(false); // Hiện ngay lập tức, không bắt bấm lại
+            }
         });
     </script>
-
-</body>
-
 </body>
 </html>
