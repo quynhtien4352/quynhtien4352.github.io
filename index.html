@@ -152,9 +152,22 @@
     </footer>
 
     <script>
+        // 1. Tìm chiếc nút bấm và tìm chỗ để viết chữ
         const nutBam = document.getElementById('myButton');
+        const theSubTitle = document.querySelector('.subtitle');
+
+        // 2. Lắng nghe lượt bấm của người dùng
         nutBam.addEventListener('click', function() {
-            alert('Chào mừng bạn đến với hành trình khám phá góc nhìn mới! Đón chờ phần tiếp theo nhé. 🎉');
+            // Thay đổi nội dung lời phụ bằng câu nói của bạn
+            theSubTitle.innerHTML = "“Niềm vui và sự hài lòng đến từ những điều nhỏ bé”";
+            
+            // Thêm hiệu ứng chữ nghiêng và đổi sang màu xanh đậm hơn cho nổi bật
+            theSubTitle.style.fontStyle = "italic";
+            theSubTitle.style.color = "#00796b";
+            theSubTitle.style.fontWeight = "bold";
+
+            // Biến mất chiếc nút bấm sau khi bấm để trang web gọn gàng hơn
+            nutBam.style.display = "none";
         });
     </script>
 
