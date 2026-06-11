@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trang Web Của Tôi</title>
+    
+    <!-- Đây là khu vực CSS (Sơn tường & Nội thất) -->
+    <style>
+        /* CẤU HÌNH CHUNG */
+        body {
+            background-color: #f2f9f9; /* Màu nền xanh ngọc pastel cực dịu nhẹ */
+            color: #2d3748;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Giúp chân trang luôn nằm ở đáy */
+        }
+
+        /* 1. PHẦN ĐẦU TRANG (HEADER) */
+        header {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between; /* Đẩy tên sang trái, menu sang phải */
+            align-items: center;
+            padding: 20px 10%;
+            box-shadow: 0 2px 10px rgba(0, 150, 136, 0.05);
+        }
+
+        header .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #00796b; /* Màu xanh ngọc đậm */
+        }
+
+        header nav a {
+            color: #4a5568;
+            text-decoration: none; /* Bỏ dấu gạch chân mặc định của liên kết */
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        header nav a:hover {
+            color: #009688; /* Đổi màu khi rà chuột vào menu */
+        }
+
+        /* 2. PHẦN NỘI DUNG CHÍNH (MAIN) */
+        .main-content {
+            flex: 1; /* Chiếm trọn không gian trống ở giữa */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .intro-card {
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 150, 136, 0.08);
+            text-align: center;
+            max-width: 600px;
+            border-left: 6px solid #009688; /* Đổi điểm nhấn sang cạnh bên trái cho mới lạ */
+        }
+/* Định dạng cho hình ảnh */
+        .avatar {
+            width: 120px;          /* Chiều rộng ảnh */
+            height: 120px;         /* Chiều cao ảnh */
+            border-radius: 50%;    /* Mẹo thần kỳ: Bo tròn 50% sẽ biến ảnh vuông thành ảnh tròn */
+            object-fit: cover;     /* Giúp ảnh không bị méo khi co giãn */
+            margin-bottom: 20px;   /* Tạo khoảng cách với chữ bên dưới */
+            border: 4px solid #e0f2f1; /* Tạo một vòng viền màu xanh ngọc nhạt quanh ảnh */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #00796b;
+            font-size: 32px;
+            margin-top: 0;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #009688;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        /* NÚT BẤM */
+        button {
+            background-color: #009688;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 16px;
+            border-radius: 30px; /* Làm nút bo tròn hẳn nhìn rất nghệ thuật */
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0, 150, 136, 0.2);
+        }
+
+        button:hover {
+            background-color: #00796b;
+            transform: translateY(-3px); /* Hiệu ứng nhấc nút lên nhẹ khi rà chuột */
+            box-shadow: 0 6px 20px rgba(0, 150, 136, 0.3);
+        }
+
+        /* 3. PHẦN CHÂN TRANG (FOOTER) */
+        footer {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: #7f8c8d;
+            border-top: 1px solid #e2e8f0;
+        }</style>
+</head>
+<script>
+        // 1. Nói với máy tính: Hãy chú ý đến chiếc nút có ID là "myButton"
+        const nutBam = document.getElementById('myButton');
+
+        // 2. Lắng nghe xem khi nào người dùng "click" vào chiếc nút đó
+        nutBam.addEventListener('click', function() {
+            // 3. Hành động sẽ xảy ra khi bấm nút: Hiển thị một hộp thoại thông báo
+            alert('Chúc mừng bạn! Bạn vừa kích hoạt dòng code JavaScript đầu tiên trong đời rồi đó! 🎉');
+        });
+    </script><body>
+
+    <body>
+
+    <header>
+        <div class="logo">Không Gian Của Tôi</div>
+        <nav>
+            <a href="#">Trang Chủ</a>
+            <a href="#">Góc Nhìn</a>
+            <a href="#">Liên Hệ</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="intro-card">
+            <img src="me.jpg" alt="Hình ảnh của tôi" class="avatar">
+            <h1>Chào bạn, mình là một người học hỏi</h1>
+            <p class="subtitle">Khám phá nội tâm và chia sẻ những góc nhìn mới về cuộc sống.</p>
+            <p>Đây là không gian nhỏ nơi mình lưu trữ những hành trình, những dự án sáng tạo và những bài học tự thân độc bản từ góc nhìn riêng.</p>
+            <button id="myButton">Khám phá ngay</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Được tự tay xây dựng bởi Chính Bạn | Cảm hứng từ sự tĩnh lặng</p>
+    </footer>
+
+    <script>
+        const nutBam = document.getElementById('myButton');
+        nutBam.addEventListener('click', function() {
+            alert('Chào mừng bạn đến với hành trình khám phá góc nhìn mới! Đón chờ phần tiếp theo nhé. 🎉');
+        });
+    </script>
+
+</body>
+
+</body>
+</html>
