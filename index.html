@@ -292,7 +292,7 @@
 
     <main class="main-content">
         <section class="intro-card" id="myIntroCard">
-            <img src="me.jpg.jpg" alt="Hình ảnh của tôi" class="avatar">
+            <img src="me.jpg" alt="Hình ảnh của tôi" class="avatar">
             <h1 id="myH1">Chào bạn, mình là một người học hỏi</h1>
             <p class="subtitle">Khám phá nội tâm và chia sẻ những góc nhìn mới về cuộc sống.</p>
             <p id="myIntroText">Đây là không gian nhỏ nơi mình lưu trữ những hành trình, những dự án sáng tạo và những bài học tự thân độc bản từ góc nhìn riêng.</p>
@@ -364,6 +364,10 @@
 
         // HÀM KÍCH HOẠT CHẾ ĐỘ ĐÊM VÀ HIỆN NỘI DUNG
         function kichHoatKhamsPha(isSmooth) {
+            // Hiển thị khung nội dung ngay lập tức để tránh bị nghẽn lệnh
+            blogContainer.style.display = "block";
+            contactContainer.style.display = "block";
+
             document.body.style.backgroundColor = "#111111"; 
             header.style.backgroundColor = "#1a1a1a";
             footer.style.backgroundColor = "#1a1a1a";
@@ -389,9 +393,6 @@
             contactGrid.style.color = "#cccccc";
             contactInfoTitle.style.color = "#ffffff";
             socialIcons.forEach(icon => { icon.style.color = "#00e676"; });
-
-            blogContainer.style.display = "block";
-            contactContainer.style.display = "block";
             
             theSubTitle.innerHTML = "“Niềm vui và sự hài lòng đến từ những điều nhỏ bé”";
             theSubTitle.style.fontStyle = "italic";
@@ -400,24 +401,25 @@
             theSubTitle.style.opacity = "1";
             nutBam.style.display = "none";
 
+            // Tạo độ trễ siêu nhỏ để hiệu ứng cuộn mượt mà xuất hiện sau khi đổi màu nền
             setTimeout(function() {
                 blogContainer.style.opacity = "1";
                 contactContainer.style.opacity = "1";
-                // Cuộn xuống mục Góc Nhìn mượt mà
                 blogContainer.scrollIntoView({ behavior: isSmooth ? 'smooth' : 'auto' });
-            }, 100);
+            }, 50);
         }
 
-        // Sự kiện khi người dùng tự bấm nút lần đầu
+        // Sự kiện khi bấm nút trực tiếp
         nutBam.addEventListener('click', function() {
-            localStorage.setItem('daKhamPha', 'true'); // Lưu trạng thái vào trình duyệt
+            localStorage.setItem('daKhamPha', 'true'); // Ghi vào bộ nhớ trình duyệt
             kichHoatKhamsPha(true);
         });
 
-        // TỰ ĐỘNG KIỂM TRA KHI TẢI LẠI TRANG (Khi từ bài viết quay về)
+        // TỰ ĐỘNG KIỂM TRA KHI QUAY LẠI TỪ BÀI VIẾT CHI TIẾT
         window.addEventListener('DOMContentLoaded', function() {
-            if (localStorage.getItem('daKhamPha') === 'true') {
-                kichHoatKhamsPha(false); // Hiện ngay lập tức, không bắt bấm lại
+            // Nếu người dùng nhấn vào nút quay lại, hoặc link có chứa dấu #goc-nhin-section
+            if (localStorage.getItem('daKhamPha') === 'true' || window.location.hash === '#goc-nhin-section') {
+                kichHoatKhamsPha(false); // Kích hoạt hiện thẳng không gian đêm mà không cần bắt bấm lại
             }
         });
     </script>
