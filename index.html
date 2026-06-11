@@ -364,7 +364,6 @@
 
         // HÀM KÍCH HOẠT CHẾ ĐỘ ĐÊM VÀ HIỆN NỘI DUNG
         function kichHoatKhamsPha(isSmooth) {
-            // Hiển thị khung nội dung ngay lập tức để tránh bị nghẽn lệnh
             blogContainer.style.display = "block";
             contactContainer.style.display = "block";
 
@@ -401,7 +400,6 @@
             theSubTitle.style.opacity = "1";
             nutBam.style.display = "none";
 
-            // Tạo độ trễ siêu nhỏ để hiệu ứng cuộn mượt mà xuất hiện sau khi đổi màu nền
             setTimeout(function() {
                 blogContainer.style.opacity = "1";
                 contactContainer.style.opacity = "1";
@@ -409,17 +407,15 @@
             }, 50);
         }
 
-        // Sự kiện khi bấm nút trực tiếp
+        // Sự kiện khi bấm nút trực tiếp tại trang chủ
         nutBam.addEventListener('click', function() {
-            localStorage.setItem('daKhamPha', 'true'); // Ghi vào bộ nhớ trình duyệt
             kichHoatKhamsPha(true);
         });
 
-        // TỰ ĐỘNG KIỂM TRA KHI QUAY LẠI TỪ BÀI VIẾT CHI TIẾT
+        // CHỈ TỰ ĐỘNG HIỆN ĐÊM KHI QUAY VỀ TỪ BÀI VIẾT CHI TIẾT (Nhờ dấu hiệu # trên đường dẫn)
         window.addEventListener('DOMContentLoaded', function() {
-            // Nếu người dùng nhấn vào nút quay lại, hoặc link có chứa dấu #goc-nhin-section
-            if (localStorage.getItem('daKhamPha') === 'true' || window.location.hash === '#goc-nhin-section') {
-                kichHoatKhamsPha(false); // Kích hoạt hiện thẳng không gian đêm mà không cần bắt bấm lại
+            if (window.location.hash === '#goc-nhin-section') {
+                kichHoatKhamsPha(false); 
             }
         });
     </script>
